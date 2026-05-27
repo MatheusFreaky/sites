@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padrão Ouro Financeiro</title>
+
+  <link rel="stylesheet" href="style.css">
+
+     <script type="module" src="script.js"></script>
+</head>
+<body>
+
+  <aside class="sidebar">
+
+    <div class="logo-area">
+      <img src="fotos/logo.png" alt="Logo">
+      <h2>Padrão Ouro</h2>
+    </div>
+
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Entradas</a>
+      <a href="#">Custos</a>
+      <a href="#">Clientes</a>
+      <a href="#">Estoque</a>
+      <a href="#">Relatórios</a>
+      <a href="#">Configurações</a>
+    </nav>
+
+  </aside>
+
+  <main>
+
+    <header>
+      <h1>Controle Financeiro</h1>
+      <span id="dataAtual"></span>
+    </header>
+
+    <section class="cards">
+
+      <div class="card entrada-card">
+        <h3>Entradas</h3>
+        <p id="totalEntradas">R$ 0,00</p>
+      </div>
+
+      <div class="card saida-card">
+        <h3>Custos</h3>
+        <p id="totalSaidas">R$ 0,00</p>
+      </div>
+
+      <div class="card lucro-card">
+        <h3>Lucro</h3>
+        <p id="lucroTotal">R$ 0,00</p>
+      </div>
+
+    </section>
+
+    <section class="painel-grid">
+
+      <div class="painel">
+
+        <h2>Nova Entrada</h2>
+
+        <form id="formEntrada">
+
+          <input type="date" id="dataEntrada" required>
+
+          <input type="text" id="descricaoEntrada" placeholder="Serviço realizado" required>
+
+          <input type="number" id="valorEntrada" placeholder="Valor recebido" required>
+
+          <button type="submit">Salvar Entrada</button>
+
+        </form>
+
+      </div>
+
+      <div class="painel">
+
+        <h2>Novo Custo</h2>
+
+        <form id="formSaida">
+
+          <input type="date" id="dataSaida" required>
+
+          <input type="text" id="descricaoSaida" placeholder="Reposição de produto" required>
+
+          <input type="number" id="valorSaida" placeholder="Valor gasto" required>
+
+          <button type="submit">Salvar Custo</button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+    <section class="graficos">
+
+      <div class="grafico-box">
+        <h2>Resumo Financeiro</h2>
+        <canvas id="graficoFinanceiro"></canvas>
+      </div>
+
+    </section>
+
+    <section class="listas">
+
+      <div class="lista-box">
+
+        <h2>Entradas</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaEntradas"></tbody>
+        </table>
+
+      </div>
+
+      <div class="lista-box">
+
+        <h2>Custos</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaSaidas"></tbody>
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
