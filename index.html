@@ -1,94 +1,267 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>Padrão Ouro Financeiro</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
 
-     <script type="module" src="script.js"></script>
 </head>
+
+
 <body>
+
+
+  <!-- MENU LATERAL -->
 
   <aside class="sidebar">
 
     <div class="logo-area">
-      <img src="fotos/logo.png" alt="Logo">
+
+      <img
+        src="fotos/logo.png"
+        alt="Logo Padrão Ouro"
+        onerror="this.style.display='none'"
+      >
+
       <h2>Padrão Ouro</h2>
+
     </div>
 
+
     <nav>
-      <a href="#">Dashboard</a>
-      <a href="#">Entradas</a>
-      <a href="#">Custos</a>
-      <a href="#">Clientes</a>
-      <a href="#">Estoque</a>
-      <a href="#">Relatórios</a>
-      <a href="#">Configurações</a>
+
+      <a href="#dashboard">
+        Dashboard
+      </a>
+
+      <a href="#entradas">
+        Entradas
+      </a>
+
+      <a href="#custos">
+        Custos
+      </a>
+
+      <a href="#clientes">
+        Clientes
+      </a>
+
+      <a href="#estoque">
+        Estoque
+      </a>
+
+      <a href="#relatorios">
+        Relatórios
+      </a>
+
+      <a href="#configuracoes">
+        Configurações
+      </a>
+
     </nav>
 
   </aside>
 
+
+
+  <!-- CONTEÚDO -->
+
   <main>
 
-    <header>
-      <h1>Controle Financeiro</h1>
+
+    <!-- CABEÇALHO -->
+
+    <header id="dashboard">
+
+      <div>
+
+        <h1>
+          Controle Financeiro
+        </h1>
+
+        <span
+          id="statusFirebase"
+          class="status offline"
+        >
+          Modo local
+        </span>
+
+      </div>
+
+
       <span id="dataAtual"></span>
+
     </header>
+
+
+
+    <!-- CARDS -->
 
     <section class="cards">
 
+
+      <!-- ENTRADAS -->
+
       <div class="card entrada-card">
-        <h3>Entradas</h3>
-        <p id="totalEntradas">R$ 0,00</p>
+
+        <h3>
+          Entradas
+        </h3>
+
+        <p id="totalEntradas">
+          R$ 0,00
+        </p>
+
       </div>
+
+
+      <!-- CUSTOS -->
 
       <div class="card saida-card">
-        <h3>Custos</h3>
-        <p id="totalSaidas">R$ 0,00</p>
+
+        <h3>
+          Custos
+        </h3>
+
+        <p id="totalSaidas">
+          R$ 0,00
+        </p>
+
       </div>
 
+
+      <!-- LUCRO -->
+
       <div class="card lucro-card">
-        <h3>Lucro</h3>
-        <p id="lucroTotal">R$ 0,00</p>
+
+        <h3>
+          Lucro
+        </h3>
+
+        <p id="lucroTotal">
+          R$ 0,00
+        </p>
+
       </div>
 
     </section>
+
+
+
+    <!-- FORMULÁRIOS -->
 
     <section class="painel-grid">
 
-      <div class="painel">
 
-        <h2>Nova Entrada</h2>
+      <!-- NOVA ENTRADA -->
+
+      <div
+        class="painel"
+        id="entradas"
+      >
+
+        <h2>
+          Nova Entrada
+        </h2>
+
 
         <form id="formEntrada">
 
-          <input type="date" id="dataEntrada" required>
 
-          <input type="text" id="descricaoEntrada" placeholder="Serviço realizado" required>
+          <input
+            type="date"
+            id="dataEntrada"
+            required
+          >
 
-          <input type="number" id="valorEntrada" placeholder="Valor recebido" required>
 
-          <button type="submit">Salvar Entrada</button>
+          <input
+            type="text"
+            id="descricaoEntrada"
+            placeholder="Serviço realizado"
+            maxlength="120"
+            required
+          >
+
+
+          <input
+            type="number"
+            id="valorEntrada"
+            placeholder="Valor recebido"
+            min="0.01"
+            step="0.01"
+            required
+          >
+
+
+          <button type="submit">
+            Salvar Entrada
+          </button>
+
 
         </form>
 
       </div>
 
-      <div class="painel">
 
-        <h2>Novo Custo</h2>
+
+      <!-- NOVO CUSTO -->
+
+      <div
+        class="painel"
+        id="custos"
+      >
+
+        <h2>
+          Novo Custo
+        </h2>
+
 
         <form id="formSaida">
 
-          <input type="date" id="dataSaida" required>
 
-          <input type="text" id="descricaoSaida" placeholder="Reposição de produto" required>
+          <input
+            type="date"
+            id="dataSaida"
+            required
+          >
 
-          <input type="number" id="valorSaida" placeholder="Valor gasto" required>
 
-          <button type="submit">Salvar Custo</button>
+          <input
+            type="text"
+            id="descricaoSaida"
+            placeholder="Reposição de produto"
+            maxlength="120"
+            required
+          >
+
+
+          <input
+            type="number"
+            id="valorSaida"
+            placeholder="Valor gasto"
+            min="0.01"
+            step="0.01"
+            required
+          >
+
+
+          <button type="submit">
+            Salvar Custo
+          </button>
+
 
         </form>
 
@@ -96,57 +269,213 @@
 
     </section>
 
-    <section class="graficos">
+
+
+    <!-- GRÁFICO -->
+
+    <section
+      class="graficos"
+      id="relatorios"
+    >
 
       <div class="grafico-box">
-        <h2>Resumo Financeiro</h2>
-        <canvas id="graficoFinanceiro"></canvas>
+
+        <h2>
+          Resumo Financeiro
+        </h2>
+
+
+        <div class="chart-container">
+
+          <canvas
+            id="graficoFinanceiro"
+          ></canvas>
+
+        </div>
+
       </div>
 
     </section>
+
+
+
+    <!-- LISTAS -->
 
     <section class="listas">
 
+
+      <!-- ENTRADAS -->
+
       <div class="lista-box">
 
-        <h2>Entradas</h2>
+        <h2>
+          Entradas
+        </h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Descrição</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
 
-          <tbody id="listaEntradas"></tbody>
-        </table>
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Data
+                </th>
+
+                <th>
+                  Descrição
+                </th>
+
+                <th>
+                  Valor
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="listaEntradas"
+            ></tbody>
+
+          </table>
+
+        </div>
 
       </div>
 
+
+
+      <!-- CUSTOS -->
+
       <div class="lista-box">
 
-        <h2>Custos</h2>
+        <h2>
+          Custos
+        </h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Descrição</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
 
-          <tbody id="listaSaidas"></tbody>
-        </table>
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Data
+                </th>
+
+                <th>
+                  Descrição
+                </th>
+
+                <th>
+                  Valor
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody
+              id="listaSaidas"
+            ></tbody>
+
+          </table>
+
+        </div>
 
       </div>
 
     </section>
 
+
+
+    <!-- CLIENTES -->
+
+    <section
+      class="info-panel"
+      id="clientes"
+    >
+
+      <h2>
+        Clientes
+      </h2>
+
+      <p>
+        Área preparada para receber o cadastro de clientes.
+      </p>
+
+    </section>
+
+
+
+    <!-- ESTOQUE -->
+
+    <section
+      class="info-panel"
+      id="estoque"
+    >
+
+      <h2>
+        Estoque
+      </h2>
+
+      <p>
+        Área preparada para controle de produtos e reposições.
+      </p>
+
+    </section>
+
+
+
+    <!-- CONFIGURAÇÕES -->
+
+    <section
+      class="info-panel"
+      id="configuracoes"
+    >
+
+      <h2>
+        Configurações
+      </h2>
+
+      <p>
+        Configure o Firebase no arquivo
+        <strong>firebase.js</strong>
+        para sincronizar os dados na nuvem.
+      </p>
+
+    </section>
+
+
   </main>
 
-  <script src="script.js"></script>
+
+
+  <!-- CHART.JS -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+  ></script>
+
+
+
+  <!-- SCRIPT PRINCIPAL -->
+
+  <script
+    type="module"
+    src="script.js"
+  ></script>
+
+
 </body>
+
 </html>

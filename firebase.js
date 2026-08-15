@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getFirestore,
@@ -8,29 +10,58 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-// CONFIG FIREBASE
+// CONFIGURAÇÃO DO FIREBASE
+
 const firebaseConfig = {
 
   apiKey: "SUA_API_KEY",
 
-  authDomain: "SEU_DOMINIO",
+  authDomain: "SEU_PROJECT_ID.firebaseapp.com",
 
   projectId: "SEU_PROJECT_ID",
 
-  storageBucket: "SEU_BUCKET",
+  storageBucket: "SEU_PROJECT_ID.firebasestorage.app",
 
-  messagingSenderId: "SEU_ID",
+  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
 
   appId: "SEU_APP_ID"
 
 };
 
 
-// INICIALIZAÇÃO
-const app = initializeApp(firebaseConfig);
+// VERIFICA SE O FIREBASE FOI CONFIGURADO
 
-const db = getFirestore(app);
+const firebaseConfigured =
+
+  firebaseConfig.apiKey !== "SUA_API_KEY" &&
+
+  firebaseConfig.projectId !== "SEU_PROJECT_ID" &&
+
+  firebaseConfig.appId !== "SEU_APP_ID";
+
+
+// BANCO
+
+let db = null;
+
+
+// INICIALIZAR FIREBASE
+
+if (firebaseConfigured) {
+
+  const app = initializeApp(firebaseConfig);
+
+  db = getFirestore(app);
+
+}
 
 
 // EXPORTAR
-export { db, collection, addDoc, getDocs };
+
+export {
+  db,
+  collection,
+  addDoc,
+  getDocs,
+  firebaseConfigured
+};
