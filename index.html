@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,454 +9,1621 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Padrão Ouro Financeiro</title>
+  <meta
+    name="theme-color"
+    content="#08090b"
+  >
+
+  <meta
+    name="description"
+    content="Sistema de gestão Padrão Ouro Estética Automotiva"
+  >
+
+  <title>Padrão Ouro | Gestão</title>
 
   <link
     rel="stylesheet"
     href="style.css"
   >
-
 </head>
-
 
 <body>
 
-
-  <!-- MENU LATERAL -->
+  <!-- SIDEBAR -->
 
   <aside class="sidebar">
 
-    <div class="logo-area">
+    <div class="brand">
 
-      <img
-        src="fotos/logo.png"
-        alt="Logo Padrão Ouro"
-        onerror="this.style.display='none'"
-      >
+      <div class="brand-logo">
+        <img
+          src="fotos/logo.png"
+          alt="Padrão Ouro"
+          onerror="this.style.display='none'"
+        >
+      </div>
 
-      <h2>Padrão Ouro</h2>
+      <div class="brand-info">
+        <strong>PADRÃO OURO</strong>
+        <span>ESTÉTICA AUTOMOTIVA</span>
+      </div>
 
     </div>
 
 
-    <nav>
+    <div class="sidebar-section">
 
-      <a href="#dashboard">
-        Dashboard
-      </a>
+      <span class="sidebar-label">
+        PRINCIPAL
+      </span>
 
-      <a href="#entradas">
-        Entradas
-      </a>
+      <nav class="main-nav">
 
-      <a href="#custos">
-        Custos
-      </a>
+        <a
+          href="#dashboard"
+          class="nav-link active"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
 
-      <a href="#clientes">
-        Clientes
-      </a>
+        <a
+          href="#agendamentos"
+          class="nav-link"
+        >
+          <span class="nav-icon">◷</span>
+          <span>Agendamentos</span>
+        </a>
 
-      <a href="#estoque">
-        Estoque
-      </a>
+        <a
+          href="#clientes"
+          class="nav-link"
+        >
+          <span class="nav-icon">♙</span>
+          <span>Clientes</span>
+        </a>
 
-      <a href="#relatorios">
-        Relatórios
-      </a>
+        <a
+          href="#veiculos"
+          class="nav-link"
+        >
+          <span class="nav-icon">▣</span>
+          <span>Veículos</span>
+        </a>
 
-      <a href="#configuracoes">
-        Configurações
-      </a>
+      </nav>
 
-    </nav>
+    </div>
+
+
+    <div class="sidebar-section">
+
+      <span class="sidebar-label">
+        FINANCEIRO
+      </span>
+
+      <nav class="main-nav">
+
+        <a
+          href="#entradas"
+          class="nav-link"
+        >
+          <span class="nav-icon">↑</span>
+          <span>Entradas</span>
+        </a>
+
+        <a
+          href="#custos"
+          class="nav-link"
+        >
+          <span class="nav-icon">↓</span>
+          <span>Custos</span>
+        </a>
+
+        <a
+          href="#relatorios"
+          class="nav-link"
+        >
+          <span class="nav-icon">▤</span>
+          <span>Relatórios</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="system-status">
+
+        <span
+          id="statusIndicator"
+          class="status-dot offline"
+        ></span>
+
+        <div>
+          <strong>Sistema</strong>
+
+          <span id="statusFirebase">
+            Modo local
+          </span>
+        </div>
+
+      </div>
+
+    </div>
 
   </aside>
 
 
+  <!-- ÁREA PRINCIPAL -->
 
-  <!-- CONTEÚDO -->
+  <main class="app">
 
-  <main>
+    <!-- TOPBAR -->
 
+    <header class="topbar">
 
-    <!-- CABEÇALHO -->
+      <div class="topbar-left">
 
-    <header id="dashboard">
-
-      <div>
-
-        <h1>
-          Controle Financeiro
-        </h1>
-
-        <span
-          id="statusFirebase"
-          class="status offline"
+        <button
+          type="button"
+          class="mobile-menu"
+          id="mobileMenu"
+          aria-label="Abrir menu"
         >
-          Modo local
-        </span>
+          ☰
+        </button>
+
+        <div>
+
+          <span class="page-kicker">
+            PAINEL DE CONTROLE
+          </span>
+
+          <h1 id="pageTitle">
+            Dashboard
+          </h1>
+
+        </div>
 
       </div>
 
 
-      <span id="dataAtual"></span>
+      <div class="topbar-right">
+
+        <div class="today">
+
+          <span>
+            Hoje
+          </span>
+
+          <strong id="dataAtual">
+            --
+          </strong>
+
+        </div>
+
+      </div>
 
     </header>
 
 
-
-    <!-- CARDS -->
-
-    <section class="cards">
-
-
-      <!-- ENTRADAS -->
-
-      <div class="card entrada-card">
-
-        <h3>
-          Entradas
-        </h3>
-
-        <p id="totalEntradas">
-          R$ 0,00
-        </p>
-
-      </div>
-
-
-      <!-- CUSTOS -->
-
-      <div class="card saida-card">
-
-        <h3>
-          Custos
-        </h3>
-
-        <p id="totalSaidas">
-          R$ 0,00
-        </p>
-
-      </div>
-
-
-      <!-- LUCRO -->
-
-      <div class="card lucro-card">
-
-        <h3>
-          Lucro
-        </h3>
-
-        <p id="lucroTotal">
-          R$ 0,00
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- FORMULÁRIOS -->
-
-    <section class="painel-grid">
-
-
-      <!-- NOVA ENTRADA -->
-
-      <div
-        class="painel"
-        id="entradas"
-      >
-
-        <h2>
-          Nova Entrada
-        </h2>
-
-
-        <form id="formEntrada">
-
-
-          <input
-            type="date"
-            id="dataEntrada"
-            required
-          >
-
-
-          <input
-            type="text"
-            id="descricaoEntrada"
-            placeholder="Serviço realizado"
-            maxlength="120"
-            required
-          >
-
-
-          <input
-            type="number"
-            id="valorEntrada"
-            placeholder="Valor recebido"
-            min="0.01"
-            step="0.01"
-            required
-          >
-
-
-          <button type="submit">
-            Salvar Entrada
-          </button>
-
-
-        </form>
-
-      </div>
-
-
-
-      <!-- NOVO CUSTO -->
-
-      <div
-        class="painel"
-        id="custos"
-      >
-
-        <h2>
-          Novo Custo
-        </h2>
-
-
-        <form id="formSaida">
-
-
-          <input
-            type="date"
-            id="dataSaida"
-            required
-          >
-
-
-          <input
-            type="text"
-            id="descricaoSaida"
-            placeholder="Reposição de produto"
-            maxlength="120"
-            required
-          >
-
-
-          <input
-            type="number"
-            id="valorSaida"
-            placeholder="Valor gasto"
-            min="0.01"
-            step="0.01"
-            required
-          >
-
-
-          <button type="submit">
-            Salvar Custo
-          </button>
-
-
-        </form>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- GRÁFICO -->
+    <!-- DASHBOARD -->
 
     <section
-      class="graficos"
-      id="relatorios"
+      id="dashboard"
+      class="page-section"
     >
 
-      <div class="grafico-box">
+      <div class="welcome">
 
-        <h2>
-          Resumo Financeiro
-        </h2>
+        <div>
 
+          <span class="section-kicker">
+            VISÃO GERAL
+          </span>
 
-        <div class="chart-container">
+          <h2>
+            Bom dia, Padrão Ouro.
+          </h2>
 
-          <canvas
-            id="graficoFinanceiro"
-          ></canvas>
+          <p>
+            Acompanhe sua operação, seus clientes,
+            agendamentos e resultados financeiros.
+          </p>
 
         </div>
+
+
+        <div class="welcome-actions">
+
+          <a
+            href="#agendamentos"
+            class="primary-button"
+          >
+            + Novo agendamento
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARDS -->
+
+      <div class="metrics-grid">
+
+        <article class="metric-card">
+
+          <div class="metric-top">
+
+            <span class="metric-label">
+              ENTRADAS
+            </span>
+
+            <span class="metric-icon green">
+              ↑
+            </span>
+
+          </div>
+
+          <strong
+            id="totalEntradas"
+            class="metric-value green-text"
+          >
+            R$ 0,00
+          </strong>
+
+          <span class="metric-description">
+            Total recebido
+          </span>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-top">
+
+            <span class="metric-label">
+              CUSTOS
+            </span>
+
+            <span class="metric-icon red">
+              ↓
+            </span>
+
+          </div>
+
+          <strong
+            id="totalSaidas"
+            class="metric-value red-text"
+          >
+            R$ 0,00
+          </strong>
+
+          <span class="metric-description">
+            Total de despesas
+          </span>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-top">
+
+            <span class="metric-label">
+              LUCRO
+            </span>
+
+            <span class="metric-icon blue">
+              $
+            </span>
+
+          </div>
+
+          <strong
+            id="lucroTotal"
+            class="metric-value blue-text"
+          >
+            R$ 0,00
+          </strong>
+
+          <span class="metric-description">
+            Resultado acumulado
+          </span>
+
+        </article>
+
+
+        <article class="metric-card">
+
+          <div class="metric-top">
+
+            <span class="metric-label">
+              AGENDAMENTOS
+            </span>
+
+            <span class="metric-icon gold">
+              ◷
+            </span>
+
+          </div>
+
+          <strong
+            id="totalAgendamentos"
+            class="metric-value"
+          >
+            0
+          </strong>
+
+          <span class="metric-description">
+            Serviços agendados
+          </span>
+
+        </article>
+
+      </div>
+
+
+      <!-- GRID DASHBOARD -->
+
+      <div class="dashboard-grid">
+
+        <!-- AGENDA -->
+
+        <section class="panel agenda-panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <span class="section-kicker">
+                AGENDA
+              </span>
+
+              <h3>
+                Próximos atendimentos
+              </h3>
+
+            </div>
+
+            <a
+              href="#agendamentos"
+              class="text-button"
+            >
+              Ver agenda →
+            </a>
+
+          </div>
+
+
+          <div
+            id="dashboardAgendamentos"
+            class="appointment-preview"
+          >
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                ◷
+              </div>
+
+              <strong>
+                Nenhum agendamento
+              </strong>
+
+              <span>
+                Os próximos serviços aparecerão aqui.
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- GRÁFICO -->
+
+        <section class="panel chart-panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <span class="section-kicker">
+                FINANCEIRO
+              </span>
+
+              <h3>
+                Desempenho
+              </h3>
+
+            </div>
+
+            <span class="period-label">
+              Geral
+            </span>
+
+          </div>
+
+
+          <div class="chart-container">
+
+            <canvas
+              id="graficoFinanceiro"
+            ></canvas>
+
+          </div>
+
+        </section>
 
       </div>
 
     </section>
 
 
+    <!-- AGENDAMENTOS -->
 
-    <!-- LISTAS -->
+    <section
+      id="agendamentos"
+      class="page-section"
+    >
 
-    <section class="listas">
+      <div class="section-heading">
 
+        <div>
 
-      <!-- ENTRADAS -->
+          <span class="section-kicker">
+            AGENDA
+          </span>
 
-      <div class="lista-box">
+          <h2>
+            Agendamentos
+          </h2>
 
-        <h2>
-          Entradas
-        </h2>
-
-
-        <div class="table-wrap">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  Data
-                </th>
-
-                <th>
-                  Descrição
-                </th>
-
-                <th>
-                  Valor
-                </th>
-
-              </tr>
-
-            </thead>
-
-
-            <tbody
-              id="listaEntradas"
-            ></tbody>
-
-          </table>
+          <p>
+            Organize os serviços marcados para seus clientes.
+          </p>
 
         </div>
 
       </div>
 
 
+      <div class="content-grid">
 
-      <!-- CUSTOS -->
+        <!-- FORMULÁRIO -->
 
-      <div class="lista-box">
+        <section class="panel form-panel">
 
-        <h2>
-          Custos
-        </h2>
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Novo agendamento
+              </h3>
+
+              <span>
+                Cadastre o próximo atendimento.
+              </span>
+
+            </div>
+
+          </div>
 
 
-        <div class="table-wrap">
+          <form id="formAgendamento">
 
-          <table>
+            <div class="field">
 
-            <thead>
+              <label for="clienteAgendamento">
+                Cliente
+              </label>
 
-              <tr>
+              <select
+                id="clienteAgendamento"
+                required
+              >
+                <option value="">
+                  Selecione o cliente
+                </option>
+              </select>
 
-                <th>
+            </div>
+
+
+            <div class="field">
+
+              <label for="veiculoAgendamento">
+                Veículo
+              </label>
+
+              <select
+                id="veiculoAgendamento"
+                required
+              >
+                <option value="">
+                  Selecione o veículo
+                </option>
+              </select>
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="dataAgendamento">
                   Data
-                </th>
+                </label>
 
-                <th>
-                  Descrição
-                </th>
+                <input
+                  type="date"
+                  id="dataAgendamento"
+                  required
+                >
 
-                <th>
-                  Valor
-                </th>
-
-              </tr>
-
-            </thead>
+              </div>
 
 
-            <tbody
-              id="listaSaidas"
-            ></tbody>
+              <div class="field">
 
-          </table>
+                <label for="horaAgendamento">
+                  Horário
+                </label>
 
-        </div>
+                <input
+                  type="time"
+                  id="horaAgendamento"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="servicoAgendamento">
+                Serviço
+              </label>
+
+              <input
+                type="text"
+                id="servicoAgendamento"
+                placeholder="Ex.: Lavagem detalhada"
+                maxlength="120"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="valorAgendamento">
+                Valor
+              </label>
+
+              <input
+                type="number"
+                id="valorAgendamento"
+                placeholder="0,00"
+                min="0"
+                step="0.01"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="observacaoAgendamento">
+                Observações
+              </label>
+
+              <textarea
+                id="observacaoAgendamento"
+                placeholder="Observações sobre o serviço..."
+                maxlength="300"
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="primary-button full-button"
+            >
+              Agendar serviço
+            </button>
+
+          </form>
+
+        </section>
+
+
+        <!-- LISTA DE AGENDAMENTOS -->
+
+        <section class="panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Agenda
+              </h3>
+
+              <span id="contadorAgendamentos">
+                0 agendamentos
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <input
+              type="search"
+              id="buscaAgendamento"
+              placeholder="Buscar agendamento..."
+            >
+
+          </div>
+
+
+          <div
+            id="listaAgendamentos"
+            class="appointment-list"
+          >
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                ◷
+              </div>
+
+              <strong>
+                Nenhum agendamento cadastrado
+              </strong>
+
+              <span>
+                Os agendamentos aparecerão aqui.
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
 
       </div>
 
     </section>
-
 
 
     <!-- CLIENTES -->
 
     <section
-      class="info-panel"
       id="clientes"
+      class="page-section"
     >
 
-      <h2>
-        Clientes
-      </h2>
+      <div class="section-heading">
 
-      <p>
-        Área preparada para receber o cadastro de clientes.
-      </p>
+        <div>
+
+          <span class="section-kicker">
+            CADASTRO
+          </span>
+
+          <h2>
+            Clientes
+          </h2>
+
+          <p>
+            Cadastre e gerencie seus clientes.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="content-grid">
+
+        <!-- FORMULÁRIO -->
+
+        <section class="panel form-panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Novo cliente
+              </h3>
+
+              <span>
+                Adicione os dados do cliente.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <form id="formCliente">
+
+            <div class="field">
+
+              <label for="nomeCliente">
+                Nome
+              </label>
+
+              <input
+                type="text"
+                id="nomeCliente"
+                placeholder="Nome completo"
+                maxlength="120"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="telefoneCliente">
+                  Telefone
+                </label>
+
+                <input
+                  type="tel"
+                  id="telefoneCliente"
+                  placeholder="(79) 99999-9999"
+                  maxlength="20"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="cpfCliente">
+                  CPF
+                </label>
+
+                <input
+                  type="text"
+                  id="cpfCliente"
+                  placeholder="000.000.000-00"
+                  maxlength="14"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="emailCliente">
+                E-mail
+              </label>
+
+              <input
+                type="email"
+                id="emailCliente"
+                placeholder="cliente@email.com"
+                maxlength="120"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="observacaoCliente">
+                Observações
+              </label>
+
+              <textarea
+                id="observacaoCliente"
+                placeholder="Informações adicionais..."
+                maxlength="300"
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="primary-button full-button"
+            >
+              Cadastrar cliente
+            </button>
+
+          </form>
+
+        </section>
+
+
+        <!-- LISTA -->
+
+        <section class="panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Clientes cadastrados
+              </h3>
+
+              <span id="contadorClientes">
+                0 clientes
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <input
+              type="search"
+              id="buscaCliente"
+              placeholder="Buscar cliente..."
+            >
+
+          </div>
+
+
+          <div
+            id="listaClientes"
+            class="client-list"
+          >
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                ♙
+              </div>
+
+              <strong>
+                Nenhum cliente cadastrado
+              </strong>
+
+              <span>
+                Os clientes aparecerão aqui.
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
 
     </section>
 
 
-
-    <!-- ESTOQUE -->
+    <!-- VEÍCULOS -->
 
     <section
-      class="info-panel"
-      id="estoque"
+      id="veiculos"
+      class="page-section"
     >
 
-      <h2>
-        Estoque
-      </h2>
+      <div class="section-heading">
 
-      <p>
-        Área preparada para controle de produtos e reposições.
-      </p>
+        <div>
+
+          <span class="section-kicker">
+            CADASTRO
+          </span>
+
+          <h2>
+            Veículos
+          </h2>
+
+          <p>
+            Cadastre os veículos dos seus clientes.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="content-grid">
+
+        <!-- FORMULÁRIO -->
+
+        <section class="panel form-panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Novo veículo
+              </h3>
+
+              <span>
+                Vincule o veículo a um cliente.
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <form id="formVeiculo">
+
+            <div class="field">
+
+              <label for="clienteVeiculo">
+                Cliente
+              </label>
+
+              <select
+                id="clienteVeiculo"
+                required
+              >
+                <option value="">
+                  Selecione o cliente
+                </option>
+              </select>
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="placaVeiculo">
+                  Placa
+                </label>
+
+                <input
+                  type="text"
+                  id="placaVeiculo"
+                  placeholder="ABC1D23"
+                  maxlength="8"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="corVeiculo">
+                  Cor
+                </label>
+
+                <input
+                  type="text"
+                  id="corVeiculo"
+                  placeholder="Prata"
+                  maxlength="40"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="marcaVeiculo">
+                  Marca
+                </label>
+
+                <input
+                  type="text"
+                  id="marcaVeiculo"
+                  placeholder="Hyundai"
+                  maxlength="50"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="modeloVeiculo">
+                  Modelo
+                </label>
+
+                <input
+                  type="text"
+                  id="modeloVeiculo"
+                  placeholder="HB20"
+                  maxlength="70"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="anoVeiculo">
+                Ano
+              </label>
+
+              <input
+                type="number"
+                id="anoVeiculo"
+                placeholder="2020"
+                min="1900"
+                max="2100"
+              >
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="primary-button full-button"
+            >
+              Cadastrar veículo
+            </button>
+
+          </form>
+
+        </section>
+
+
+        <!-- LISTA -->
+
+        <section class="panel">
+
+          <div class="panel-header">
+
+            <div>
+
+              <h3>
+                Veículos cadastrados
+              </h3>
+
+              <span id="contadorVeiculos">
+                0 veículos
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <input
+              type="search"
+              id="buscaVeiculo"
+              placeholder="Buscar por placa, modelo ou cliente..."
+            >
+
+          </div>
+
+
+          <div
+            id="listaVeiculos"
+            class="vehicle-list"
+          >
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                ▣
+              </div>
+
+              <strong>
+                Nenhum veículo cadastrado
+              </strong>
+
+              <span>
+                Os veículos aparecerão aqui.
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
 
     </section>
 
 
-
-    <!-- CONFIGURAÇÕES -->
+    <!-- ENTRADAS -->
 
     <section
-      class="info-panel"
-      id="configuracoes"
+      id="entradas"
+      class="page-section"
     >
 
-      <h2>
-        Configurações
-      </h2>
+      <div class="section-heading">
 
-      <p>
-        Configure o Firebase no arquivo
-        <strong>firebase.js</strong>
-        para sincronizar os dados na nuvem.
-      </p>
+        <div>
+
+          <span class="section-kicker">
+            FINANCEIRO
+          </span>
+
+          <h2>
+            Entradas
+          </h2>
+
+          <p>
+            Registre os valores recebidos pelos serviços.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <section class="panel form-panel narrow-panel">
+
+        <form id="formEntrada">
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="dataEntrada">
+                Data
+              </label>
+
+              <input
+                type="date"
+                id="dataEntrada"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="valorEntrada">
+                Valor recebido
+              </label>
+
+              <input
+                type="number"
+                id="valorEntrada"
+                placeholder="0,00"
+                min="0.01"
+                step="0.01"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="descricaoEntrada">
+              Descrição
+            </label>
+
+            <input
+              type="text"
+              id="descricaoEntrada"
+              placeholder="Ex.: Lavagem detalhada — HB20 ABC1D23"
+              maxlength="150"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Salvar entrada
+          </button>
+
+        </form>
+
+      </section>
+
+
+      <section class="panel table-panel">
+
+        <div class="panel-header">
+
+          <div>
+
+            <h3>
+              Histórico de entradas
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Data
+                </th>
+
+                <th>
+                  Descrição
+                </th>
+
+                <th>
+                  Valor
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="listaEntradas"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
 
     </section>
 
+
+    <!-- CUSTOS -->
+
+    <section
+      id="custos"
+      class="page-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="section-kicker">
+            FINANCEIRO
+          </span>
+
+          <h2>
+            Custos
+          </h2>
+
+          <p>
+            Controle produtos, despesas e outros gastos.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <section class="panel form-panel narrow-panel">
+
+        <form id="formSaida">
+
+          <div class="form-row">
+
+            <div class="field">
+
+              <label for="dataSaida">
+                Data
+              </label>
+
+              <input
+                type="date"
+                id="dataSaida"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label for="valorSaida">
+                Valor gasto
+              </label>
+
+              <input
+                type="number"
+                id="valorSaida"
+                placeholder="0,00"
+                min="0.01"
+                step="0.01"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="descricaoSaida">
+              Descrição
+            </label>
+
+            <input
+              type="text"
+              id="descricaoSaida"
+              placeholder="Ex.: Reposição de produtos"
+              maxlength="150"
+              required
+            >
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="danger-button"
+          >
+            Salvar custo
+          </button>
+
+        </form>
+
+      </section>
+
+
+      <section class="panel table-panel">
+
+        <div class="panel-header">
+
+          <div>
+
+            <h3>
+              Histórico de custos
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Data
+                </th>
+
+                <th>
+                  Descrição
+                </th>
+
+                <th>
+                  Valor
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="listaSaidas"></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- RELATÓRIOS -->
+
+    <section
+      id="relatorios"
+      class="page-section"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <span class="section-kicker">
+            ANÁLISE
+          </span>
+
+          <h2>
+            Relatórios
+          </h2>
+
+          <p>
+            Acompanhe o desempenho financeiro da empresa.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="report-filters panel">
+
+        <div class="field">
+
+          <label for="mesRelatorio">
+            Mês
+          </label>
+
+          <input
+            type="month"
+            id="mesRelatorio"
+          >
+
+        </div>
+
+
+        <button
+          type="button"
+          id="btnGerarRelatorio"
+          class="primary-button"
+        >
+          Gerar relatório
+        </button>
+
+      </div>
+
+
+      <div class="report-grid">
+
+        <article class="report-card">
+
+          <span>
+            ENTRADAS DO MÊS
+          </span>
+
+          <strong
+            id="relatorioEntradas"
+            class="green-text"
+          >
+            R$ 0,00
+          </strong>
+
+        </article>
+
+
+        <article class="report-card">
+
+          <span>
+            CUSTOS DO MÊS
+          </span>
+
+          <strong
+            id="relatorioSaidas"
+            class="red-text"
+          >
+            R$ 0,00
+          </strong>
+
+        </article>
+
+
+        <article class="report-card">
+
+          <span>
+            LUCRO DO MÊS
+          </span>
+
+          <strong
+            id="relatorioLucro"
+            class="blue-text"
+          >
+            R$ 0,00
+          </strong>
+
+        </article>
+
+
+        <article class="report-card">
+
+          <span>
+            SERVIÇOS REALIZADOS
+          </span>
+
+          <strong id="relatorioServicos">
+            0
+          </strong>
+
+        </article>
+
+      </div>
+
+
+      <section class="panel">
+
+        <div class="panel-header">
+
+          <div>
+
+            <h3>
+              Resumo financeiro
+            </h3>
+
+            <span id="periodoRelatorio">
+              Selecione um mês para gerar o relatório.
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="chart-container report-chart">
+
+          <canvas
+            id="graficoRelatorio"
+          ></canvas>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="app-footer">
+
+      <span>
+        Padrão Ouro Estética Automotiva
+      </span>
+
+      <span>
+        Sistema de gestão
+      </span>
+
+    </footer>
 
   </main>
-
 
 
   <!-- CHART.JS -->
@@ -467,12 +1633,12 @@
   ></script>
 
 
-
   <!-- SCRIPT PRINCIPAL -->
-<script
-  type="module"
-  src="script.js?v=2"
-></script>
+
+  <script
+    type="module"
+    src="script.js"
+  ></script>
 
 </body>
 
